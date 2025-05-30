@@ -1,8 +1,10 @@
 package com.TF2Tradeup.Backend.user;
 
+import com.TF2Tradeup.Backend.blog.Blog;
 import com.TF2Tradeup.Backend.tradeup.Tradeup;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Array;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -49,6 +51,9 @@ public class User {
 
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Tradeup> userTradeups = new ArrayList<>();
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Blog> userBlogs = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
