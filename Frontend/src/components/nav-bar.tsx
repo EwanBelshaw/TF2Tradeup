@@ -9,20 +9,25 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useAuth } from "react-oidc-context";
+import { useNavigate } from "react-router";
 
 const NavBar: React.FC = () => {
   const { user, signoutRedirect } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="bg-gray-500 text-white">
       <div className="container mx-auto p-4">
         <div className="flex justify-between item-center">
-          <h1 className="text-xl font-bold">TF2 Tradeup</h1>
+          <h1 className="text-xl font-bold" onClick={() => navigate("/home")}>
+            {" "}
+            TF2 Tradeup
+          </h1>
 
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
-                <AvatarFallback className="bg-gray-700">
+                <AvatarFallback className="bg-blue-400">
                   {" "}
                   {user?.profile.preferred_username?.slice(0, 2).toUpperCase()}
                 </AvatarFallback>

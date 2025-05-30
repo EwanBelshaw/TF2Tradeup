@@ -15,12 +15,13 @@ const TradeupLandingPage: React.FC = () => {
   return (
     <div className="bg-orange-300 min-h-screen text-white">
       {/*Nav*/}
+
       <div className="bg-gray-500 flex justify-end p-4">
         {isAuthenticated ? (
           <div className="flex gap-4">
             <Button
               className="cursor-pointer"
-              onClick={() => navigate("/dashboard/create-blog")}
+              onClick={() => navigate("/create-blog")}
             >
               Create-blog
             </Button>
