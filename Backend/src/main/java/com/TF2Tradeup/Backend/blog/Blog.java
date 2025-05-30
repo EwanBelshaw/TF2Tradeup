@@ -3,7 +3,10 @@ package com.TF2Tradeup.Backend.blog;
 
 import com.TF2Tradeup.Backend.user.User;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -17,11 +20,22 @@ public class Blog {
     @JoinColumn(nullable = false)
     private User author;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
     private String description;
 
+    @Column(nullable = false)
     private String content;
+
+    @CreationTimestamp
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
