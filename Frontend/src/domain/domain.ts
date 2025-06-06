@@ -11,19 +11,18 @@ export const isErrorResponse = (obj: any): obj is ErrorResponse => {
   );
 };
 
-export enum BlogTag{
-    WARPAINT="WARPAINT",
-    HAT="HAT",
-    TRADING="TRADING",
-    TRADEUP="TRADEUP",
-    PATTERN="PATTERN"
+export enum BlogTag {
+  WARPAINT = "WARPAINT",
+  HAT = "HAT",
+  TRADING = "TRADING",
+  TRADEUP = "TRADEUP",
+  PATTERN = "PATTERN",
 }
 
 export interface CreateBlogRequest {
-    title: string,
-    description?: string,
-    content: string,
-    createdAt: Date,
-    tag?: BlogTag,
-   
+  title: string;
+  description?: string;
+  content: string;
+  createdAt: Date;
+  tag?: BlogTag;
 }

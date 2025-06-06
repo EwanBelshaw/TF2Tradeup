@@ -16,12 +16,9 @@ const Blog: React.FC = () => {
     content: "",
   });
 
-
-  const updateField = (field: keyof BlogData,
-    value: any
-  ) => {
-    setBlogData((prev) => ({...prev, [field]: value}))
-  }
+  const updateField = (field: keyof BlogData, value: any) => {
+    setBlogData((prev) => ({ ...prev, [field]: value }));
+  };
 
   const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +38,7 @@ const Blog: React.FC = () => {
               onChange={(e) => updateField("title", e.target.value)}
               required
             />
-             <Input
+            <Input
               id="blog-description"
               className="bg-white border-black text-black mb-6"
               placeholder="Blog description"
@@ -49,10 +46,11 @@ const Blog: React.FC = () => {
               required
             />
             <Textarea
-            className="bg-white border-black text-black mb-6"
-            placeholder="Blog content"
-            onChange={(e) => updateField("content", e.target.value)}
-            required/>
+              className="bg-white border-black text-black mb-6"
+              placeholder="Blog content"
+              onChange={(e) => updateField("content", e.target.value)}
+              required
+            />
           </div>
           <p>{JSON.stringify(blogData)}</p>
         </form>
