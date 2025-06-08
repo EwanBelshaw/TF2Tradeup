@@ -2,6 +2,10 @@ import { Textarea } from "@/components/ui/textarea";
 import NavBar from "../components/nav-bar";
 import { Input } from "../components/ui/input";
 import { useState } from "react";
+import { createBlog } from "@/lib/api";
+import type { CreateBlogRequest } from "@/domain/domain";
+import { useAuth } from "react-oidc-context";
+import { Button } from "@/components/ui/button";
 
 interface BlogData {
   title: string;
@@ -10,6 +14,9 @@ interface BlogData {
 }
 
 const CreateBlog: React.FC = () => {
+
+  const {isLoading, user} = useAuth()
+
   const [blogData, setBlogData] = useState<BlogData>({
     title: "",
     description: "",
@@ -22,6 +29,19 @@ const CreateBlog: React.FC = () => {
 
   const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if(isLoading || !user || !user.access_token){
+      console.error("User not found.")
+      return
+    }
+
+    const request: CreateBlogRequest ={
+      title: blogData.title,
+      description: blogData.description,
+      content: blogData.content
+    }
+
+    createBlog(user.access_token, request)
+
   };
 
   return (
@@ -52,6 +72,7 @@ const CreateBlog: React.FC = () => {
               required
             />
           </div>
+          <Button onClick={formSubmit}>Submit</Button>
           <p>{JSON.stringify(blogData)}</p>
         </form>
       </div>
