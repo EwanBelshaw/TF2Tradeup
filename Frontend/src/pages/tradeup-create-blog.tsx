@@ -26,7 +26,7 @@ const CreateBlog: React.FC = () => {
     setBlogData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const formSubmit = (e: React.FormEvent) => {
+  const formSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     if (isLoading || !user || !user.access_token) {
       console.error("User not found.");
@@ -39,7 +39,7 @@ const CreateBlog: React.FC = () => {
       content: blogData.content,
     };
 
-    createBlog(user.access_token, request);
+    await createBlog(user.access_token, request);
   };
 
   return (
