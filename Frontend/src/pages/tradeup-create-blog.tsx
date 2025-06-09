@@ -6,6 +6,8 @@ import { createBlog } from "@/lib/api";
 import type { CreateBlogRequest } from "@/domain/domain";
 import { useAuth } from "react-oidc-context";
 import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 interface BlogData {
   title: string;
@@ -22,12 +24,15 @@ const CreateBlog: React.FC = () => {
     content: "",
   });
 
+  const [error, setError] = useState<string | undefined>();
+
   const updateField = (field: keyof BlogData, value: any) => {
     setBlogData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const formSubmit = async(e: React.FormEvent) => {
+  const formSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(undefined);
     if (isLoading || !user || !user.access_token) {
       console.error("User not found.");
       return;
@@ -38,8 +43,17 @@ const CreateBlog: React.FC = () => {
       description: blogData.description,
       content: blogData.content,
     };
-
-    await createBlog(user.access_token, request);
+    try {
+      await createBlog(user.access_token, request);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else if (typeof err === "string") {
+        setError(err);
+      } else {
+        setError("Something unknown went wrong.");
+      }
+    }
   };
 
   return (
@@ -70,7 +84,19 @@ const CreateBlog: React.FC = () => {
               required
             />
           </div>
-          <Button onClick={formSubmit}>Submit</Button>
+
+          {error && (
+            <div>
+              <Alert variant="destructive" className="border-red-700">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            </div>
+          )}
+          <div className="py-5">
+            <Button onClick={formSubmit}>Submit</Button>
+          </div>
           <p>{JSON.stringify(blogData)}</p>
         </form>
       </div>
