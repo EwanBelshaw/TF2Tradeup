@@ -21,7 +21,7 @@ export enum BlogTag {
 
 export interface CreateBlogRequest {
   title: string;
-  description?: string;
+  description: string;
   content: string;
-  tag?: BlogTag;
+  //tag: BlogTag;
 }

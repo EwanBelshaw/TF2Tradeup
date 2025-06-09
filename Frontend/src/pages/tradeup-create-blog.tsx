@@ -14,8 +14,7 @@ interface BlogData {
 }
 
 const CreateBlog: React.FC = () => {
-
-  const {isLoading, user} = useAuth()
+  const { isLoading, user } = useAuth();
 
   const [blogData, setBlogData] = useState<BlogData>({
     title: "",
@@ -29,19 +28,18 @@ const CreateBlog: React.FC = () => {
 
   const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if(isLoading || !user || !user.access_token){
-      console.error("User not found.")
-      return
+    if (isLoading || !user || !user.access_token) {
+      console.error("User not found.");
+      return;
     }
 
-    const request: CreateBlogRequest ={
+    const request: CreateBlogRequest = {
       title: blogData.title,
       description: blogData.description,
-      content: blogData.content
-    }
+      content: blogData.content,
+    };
 
-    createBlog(user.access_token, request)
-
+    createBlog(user.access_token, request);
   };
 
   return (
