@@ -15,6 +15,8 @@ const CallBackPage: React.FC = () => {
       if (redirectPath) {
         localStorage.removeItem("redirectPath");
         navigate(redirectPath);
+      }else{
+        navigate("/home")
       }
     }
   }, [isLoading, isAuthenticated, navigate]);
