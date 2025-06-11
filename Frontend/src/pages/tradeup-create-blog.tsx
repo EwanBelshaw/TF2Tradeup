@@ -59,7 +59,7 @@ const CreateBlog: React.FC = () => {
   return (
     <div className="min-h-screen bg-orange-300 text-white">
       <NavBar />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-xl">
         <h1 className="text-2xl font-bold mb-6">Create a blog!</h1>
         <form onSubmit={formSubmit}>
           <div>

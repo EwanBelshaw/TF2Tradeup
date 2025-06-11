@@ -16,7 +16,7 @@ const TradeupLandingPage: React.FC = () => {
     <div className="bg-orange-300 min-h-screen text-white">
       {/*Nav*/}
 
-      <div className="bg-gray-500 flex justify-end p-4">
+      <div className="bg-gray-500 flex justify-end p-4 container mx-auto">
         {isAuthenticated ? (
           <div className="flex gap-4">
             <Button
@@ -43,7 +43,7 @@ const TradeupLandingPage: React.FC = () => {
       </div>
 
       <main className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Left column */}
           <div className="space-y-4">
             <h1 className="text-5xl font-bold ">TF2 tradeup calculator</h1>
