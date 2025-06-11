@@ -11,7 +11,7 @@ const LoginPage: React.FC = () => {
       signinRedirect();
     }
   }, [isLoading, isAuthenticated, signinRedirect]);
-  return <div>Reditecting login...</div>;
+  return <div>Redirecting login...</div>;
 };
 
 export default LoginPage;
