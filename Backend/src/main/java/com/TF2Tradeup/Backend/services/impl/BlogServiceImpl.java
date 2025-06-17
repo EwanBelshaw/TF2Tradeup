@@ -3,6 +3,7 @@ package com.TF2Tradeup.Backend.services.impl;
 
 import com.TF2Tradeup.Backend.entities.blog.Blog;
 import com.TF2Tradeup.Backend.entities.user.User;
+import com.TF2Tradeup.Backend.repositories.BlogRepository;
 import com.TF2Tradeup.Backend.repositories.UserRepository;
 import com.TF2Tradeup.Backend.requests.CreateBlogRequest;
 import com.TF2Tradeup.Backend.services.BlogService;
@@ -18,6 +19,7 @@ public class BlogServiceImpl implements BlogService {
 
 
     private final UserRepository userRepository;
+    private final BlogRepository blogRepository;
 
     @Override
     public Blog createBlog(UUID authorId, CreateBlogRequest blog){
@@ -30,6 +32,7 @@ public class BlogServiceImpl implements BlogService {
         blogToCreate.setAuthor(author);
         blogToCreate.setContent(blog.getContent());
         blogToCreate.setDescription(blog.getDescription());
-        return null;
+        // blogToCreate.setTag(blog.getTag); TODO: Tag functionality / Thumbnail
+        return blogRepository.save(blogToCreate);
     }
 }
