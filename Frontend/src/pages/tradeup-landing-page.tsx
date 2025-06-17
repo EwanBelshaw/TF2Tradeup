@@ -16,7 +16,7 @@ const TradeupLandingPage: React.FC = () => {
     <div className="bg-orange-300 min-h-screen text-white">
       {/*Nav*/}
 
-      <div className="bg-gray-500 flex justify-end p-4 container mx-auto">
+      <div className="bg-gray-500 flex justify-end p-4 mx-auto">
         {isAuthenticated ? (
           <div className="flex gap-4">
             <Button
