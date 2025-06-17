@@ -1,7 +1,7 @@
-package com.TF2Tradeup.Backend.tradeup;
+package com.TF2Tradeup.Backend.entities.tradeup;
 
-import com.TF2Tradeup.Backend.skin.Skin;
-import com.TF2Tradeup.Backend.user.User;
+import com.TF2Tradeup.Backend.entities.skin.Skin;
+import com.TF2Tradeup.Backend.entities.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

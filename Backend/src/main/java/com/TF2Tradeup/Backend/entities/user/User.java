@@ -1,10 +1,9 @@
-package com.TF2Tradeup.Backend.user;
+package com.TF2Tradeup.Backend.entities.user;
 
-import com.TF2Tradeup.Backend.blog.Blog;
-import com.TF2Tradeup.Backend.tradeup.Tradeup;
+import com.TF2Tradeup.Backend.entities.blog.Blog;
+import com.TF2Tradeup.Backend.entities.tradeup.Tradeup;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Array;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 

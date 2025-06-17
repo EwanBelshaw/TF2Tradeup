@@ -1,7 +1,7 @@
 package com.TF2Tradeup.Backend.filters;
 
-import com.TF2Tradeup.Backend.user.User;
-import com.TF2Tradeup.Backend.user.UserRepository;
+import com.TF2Tradeup.Backend.entities.user.User;
+import com.TF2Tradeup.Backend.repositories.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.TF2Tradeup.Backend.skin;
+package com.TF2Tradeup.Backend.entities.skin;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

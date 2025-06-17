@@ -1,4 +1,4 @@
-package com.TF2Tradeup.Backend.blog;
+package com.TF2Tradeup.Backend.entities.blog;
 
 public enum Tag {
     WARPAINT,
